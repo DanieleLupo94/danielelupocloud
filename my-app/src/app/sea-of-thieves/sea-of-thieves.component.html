@@ -1,0 +1,44 @@
+<div class="row" style="margin-top: 2%">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="form-inline">
+      <input class="form-control mr-sm-2" placeholder="Cerca l'isola" aria-label="Cerca l'isola" id="inputSearch"
+        list="nomi" style="width: 90%">
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="cerca()"><span
+          class="glyphicon glyphicon-search"></span></button>
+      <datalist id="nomi">
+        <option *ngFor="let isola of elencoMappe" value="{{isola.getNome()}}">{{isola.getNome()}}</option>
+      </datalist>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+<div class="row" style="margin-top: 1%" *ngIf="mostraRisultato == false">
+  <ng-container>
+    <div class="col-md-4 cardIsola" *ngFor="let isola of elencoMappe">
+      <h4><b>{{isola.getNome()}}</b> {{isola.getPosizione()}}</h4>
+      <img src="{{isola.getUrlImmagine()}}" alt="Immagine isola">
+    </div>
+  </ng-container>
+</div>
+
+<ng-container *ngIf="mostraRisultato == true">
+  <div class="row" style="margin-top: 1%">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 cardIsola">
+      <h4><b>{{isolaTrovata.getNome()}}</b> {{isolaTrovata.getPosizione()}}</h4>
+      <img src="{{isolaTrovata.getUrlImmagine()}}" alt="Immagine isola">
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" style="text-align: center">
+      <p-button label="Reset" (click)="resetRicerca()"></p-button>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</ng-container>
+
+
+<router-outlet></router-outlet>

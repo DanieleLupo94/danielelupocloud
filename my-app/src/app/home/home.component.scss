@@ -1,0 +1,13 @@
+.centroSchermo {
+    position:absolute;
+    top:40%;
+    text-align:center;
+    width:99%
+}
+
+::ng-deep{
+    body {
+        color: white;
+        background-color: black;
+    }
+} 
